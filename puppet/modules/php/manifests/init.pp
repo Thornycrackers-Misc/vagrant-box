@@ -68,7 +68,12 @@ class php {
       require => File['/etc/apache2/mods-enabled/dir.conf'];
 
     'xdebug_init.sh':
-      command => '/tmp/xdebug_init.sh';
+      command => '/tmp/xdebug_init.sh',
+      require => Package['php5-xdebug'];
+
+    'composer install':
+      command => 'curl -s http://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer',
+      require => Package['php5'];
   }
 
 }
