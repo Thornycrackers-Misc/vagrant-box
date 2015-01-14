@@ -1,7 +1,8 @@
 class system-update {
   exec { 
     'apt-get update':
-      command => 'apt-get update',
+      command => 'sudo rm -rvf /var/lib/apt/lists/* && sudo apt-get update',
+      # There was issues with apt-get update, rm files before running the command
   }
 
   # Install some things for mail to work 

@@ -72,7 +72,11 @@ class php {
       require => Package['php5-xdebug'];
 
     'composer install':
-      command => 'curl -s http://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer',
+      command => 'curl -sS http://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer',
+      require => Package['php5'];
+
+    'symfony install':
+      command => 'curl -LsS http://symfony.com/installer > symfony.phar && sudo mv symfony.phar /usr/local/bin/symfony && chmod a+x /usr/local/bin/symfony',
       require => Package['php5'];
   }
 
