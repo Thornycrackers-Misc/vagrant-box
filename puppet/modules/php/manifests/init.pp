@@ -7,8 +7,10 @@ class php {
              'php5-dev',
              'php5-gd',
              'php5-imagick',
+             'php5-intl',
              'php5-mcrypt',
              'php5-memcache',
+             'php5-mongo',
              'php5-mysql',
              'php5-pspell',
              'php5-sqlite',
@@ -63,7 +65,7 @@ class php {
 
   # Restart Apache after updating dir.conf
   exec { 
-    'service apache2 restart':
+    'apache2 restart':
       command => 'service apache2 restart',
       require => File['/etc/apache2/mods-enabled/dir.conf'];
 
@@ -73,10 +75,12 @@ class php {
 
     'composer install':
       command => 'curl -sS http://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer',
+      onlyif => 'test ! -f /usr/local/bin/composer',
       require => Package['php5'];
 
     'symfony install':
       command => 'curl -LsS http://symfony.com/installer > symfony.phar && sudo mv symfony.phar /usr/local/bin/symfony && chmod a+x /usr/local/bin/symfony',
+      onlyif => 'test ! /usr/local/bin/symfony',
       require => Package['php5'];
   }
 
