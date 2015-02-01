@@ -3,3 +3,4 @@
 !/puppet/
 !/VagrantFile
 !/.gitignore
+!/fabfile.py
