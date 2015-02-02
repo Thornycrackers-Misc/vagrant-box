@@ -115,6 +115,7 @@ fi
 alias phplog='tail -f /var/log/php-errors.log'
 alias c='clear'
 alias www='cd /vagrant'
+alias pap='php app/console'
 
 # Source that configurations in the bashrc2 file
 source ~/.bashrc2
