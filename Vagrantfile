@@ -40,7 +40,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Use NFS for shared folders, much better performance BUT doesn't work on windows
   #config.vm.synced_folder '~/Sites', '/vagrant', nfs: true
   #config.vm.synced_folder '~/Sites', '/vagrant', type: "rsync"
-  config.vm.synced_folder '~/Sites', '/vagrant', type: "nfs", mount_options:['nolock,vers=3,udp,noatime,actimeo=1']
+  config.vm.synced_folder '~/Sites', '/vagrant', type: "nfs"
 
   # Let Vagrant get an ip to allow ssh
   config.vm.network :public_network
