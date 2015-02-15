@@ -17,7 +17,8 @@ class php {
              'php5-tidy',
              'php5-xdebug',
              'php5-xmlrpc',
-             'php5-xsl']:
+             'php5-xsl',
+             'pdftk']:
     ensure => present,
     require => Class["apache"];
   }
