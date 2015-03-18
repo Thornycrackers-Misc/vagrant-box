@@ -1,6 +1,7 @@
 /*
 /*/
 !/puppet/
+!/salt/
 !/VagrantFile
 !/.gitignore
 !/fabfile.py

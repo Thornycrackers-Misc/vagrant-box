@@ -10,18 +10,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty32"
  
   # Forward ports from the vagrant box to local host
-  config.vm.network :forwarded_port, host: 9001, guest: 9000
+  config.vm.network :forwarded_port, host: 9000, guest: 9000
   config.vm.network :forwarded_port, host: 8881, guest: 80
   config.vm.network :forwarded_port, host: 3306, guest: 3306
 
   # Provision via script
   #config.vm.provision :shell, path: "bootstrap.sh"
 
-  # Provision via puppet
-  config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "puppet/manifests"
-    puppet.options = ['--verbose']
-    puppet.module_path = "puppet/modules"
+  # Sync folder
+   config.vm.synced_folder "salt/srv/", "/srv/salt/"
+
+  # Provision via salt
+  config.vm.provision :salt do |salt|
+      salt.minion_config = "salt/minion"
+      salt.run_highstate = true
   end
 
   config.vm.provider :virtualbox do |virtualbox|
