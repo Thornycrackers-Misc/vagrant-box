@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty32"
  
   # Forward ports from the vagrant box to local host
-  config.vm.network :forwarded_port, host: 9000, guest: 9000
+  config.vm.network :forwarded_port, host: 9001, guest: 9000
   config.vm.network :forwarded_port, host: 8881, guest: 80
   config.vm.network :forwarded_port, host: 3306, guest: 3306
 
@@ -27,10 +27,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider :virtualbox do |virtualbox|
     # Helps OSX provision multiple cores
     virtualbox.customize ["modifyvm", :id, "--ioapic", "on"  ]
-    # allocate 4096 mb RAM
-    virtualbox.customize ["modifyvm", :id, "--memory", "4096"] 
+    # allocate 8GB RAM
+    virtualbox.customize ["modifyvm", :id, "--memory", "8192"] 
     # allocate max 50% CPU
-    virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+    virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
     # Give acces to multiple cpus
     virtualbox.customize ["modifyvm", :id, "--cpus", "8"]
   end
