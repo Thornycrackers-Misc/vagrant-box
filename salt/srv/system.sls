@@ -24,3 +24,6 @@ mail-host-entry:
       - localhost.localdomain
       - localhost
       - vagrant-ubuntu-trusty-32
+
+git:
+  pkg.installed
