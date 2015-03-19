@@ -1,4 +1,4 @@
-install-apache:
+apache:
   pkg.installed:
     - name: apache2
   service.running:
@@ -10,25 +10,22 @@ a2enmod rewrite:
     - unless: 'ls /etc/apache2/mods-enabled/rewrite.load'
     - order: 225
     - require:
-      - pkg: install-apache
+      - pkg: apache
 
-remove-html-folder:
-  file.absent:
-    - name: '/var/www'
+/var/www:
+  file.absent
 
-symlink-vagrant:
+symlink-folders:
   file.symlink:
     - name: '/var/www'
     - target: '/vagrant'
 
-apache2-conf-file:
+/etc/apache2/apache2.conf:
   file.managed:
-    - name: '/etc/apache2/apache2.conf'
     - source: 'salt://files/apache2.conf'
 
-default-conf-file:
+/etc/apache2/sites-enabled/000-default.conf:
   file.managed:
-    - name: '/etc/apache2/sites-enabled/000-default.conf'
     - source: 'salt://files/default.conf'
 
 apache-restart:

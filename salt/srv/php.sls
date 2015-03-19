@@ -25,55 +25,50 @@ php-packages:
       - pdftk
 
 
-apache-dir-conf:
+/etc/apache2/mods-enabled/dir.conf:
   file.managed:
-    - name: '/etc/apache2/mods-enabled/dir.conf'
     - source: 'salt://files/dir.conf'
 
-php-ini-directory:
+/etc/php5/apache2:
   file.directory:
-    - name: '/etc/php5/apache2'
     - makedirs: True
 
-php-ini:
+/etc/php5/apache2/php.ini:
   file.managed:
-    - name: '/etc/php5/apache2/php.ini'
     - source: 'salt://files/php.ini'
 
-php-cli-ini-directory:
+/etc/php5/cli:
   file.directory:
-    - name: '/etc/php5/cli'
     - makedirs: True
 
-php-cli-ini:
+/etc/php5/cli/php.ini:
   file.managed:
-    - name: '/etc/php5/cli/php.ini'
     - source: 'salt://files/php-cli.ini'
 
-php-error-log:
+/var/log/php-errors.log:
   file.managed:
-    - name: '/var/log/php-errors.log'
     - user: www-data
     - owner: www-data
 
-xdebug-init-script:
+/tmp/xdebug_init.sh:
   file.managed:
-    - name: '/tmp/xdebug_init.sh'
     - owner: root
     - group: root
     - mode: 0755
     - source: 'salt://files/xdebug_init.sh'
 
-run-xdebug-script:
+xdebug-script:
   cmd.run:
     - name: /tmp/xdebug_init.sh
 
 install-composer:
   cmd.run:
+    - unless: which composer
     - name: curl -sS http://getcomposer.org/installer | php && sudo mv composer.phar /usr/local/bin/composer
 
 install-symfony:
   cmd.run:
+    - unless: which symfony
     - name: curl -LsS http://symfony.com/installer > symfony.phar && sudo mv symfony.phar /usr/local/bin/symfony && chmod a+x /usr/local/bin/symfony
 
 php-apache-restart:

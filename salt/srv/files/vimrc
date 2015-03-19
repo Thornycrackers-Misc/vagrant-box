@@ -1,0 +1,16 @@
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set textwidth=0
+set history=200
+set smartindent
+set number
+set splitright
+set splitbelow
+set incsearch
+set nowrap
+set t_Co=256
+set completeopt=longest,menuone
+set wildmode=longest,list
+set backspace=indent,eol,start
+hi CursorLineNR cterm=bold ctermfg=226

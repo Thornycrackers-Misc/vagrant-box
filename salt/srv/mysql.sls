@@ -5,9 +5,8 @@ install-mysql:
     - name: mysql
     - enable: True
 
-mysql-conf:
+/etc/mysql/my.cnf:
   file.managed:
-    - name: '/etc/mysql/my.cnf'
     - source: 'salt://files/my.cnf'
 
 set-mysql-password:

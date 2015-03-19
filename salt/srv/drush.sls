@@ -1,3 +1,2 @@
-install-drush:
-  pkg.installed:
-    - name: drush
+drush:
+  pkg.installed
