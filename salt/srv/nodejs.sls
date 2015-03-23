@@ -24,6 +24,6 @@ ionic:
   npm.installed:
     - user: root
 
-grunt:
+grunt-cli:
   npm.installed:
     - user: root
