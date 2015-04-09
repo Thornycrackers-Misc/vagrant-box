@@ -71,6 +71,11 @@ install-symfony:
     - unless: which symfony
     - name: curl -LsS http://symfony.com/installer > symfony.phar && sudo mv symfony.phar /usr/local/bin/symfony && chmod a+x /usr/local/bin/symfony
 
+install-phpunit:
+  cmd.run:
+    - unless: which phpunit
+    - name: wget https://phar.phpunit.de/phpunit.phar && sudo mv phpunit.phar /usr/local/bin/phpunit && chmod +x /usr/local/bin/phpunit
+
 php-apache-restart:
   module.wait:
     - name: service.restart
