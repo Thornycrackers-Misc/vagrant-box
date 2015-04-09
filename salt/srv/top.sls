@@ -7,3 +7,4 @@ base:
     - drush
     - nodejs
     - ruby
+    - python
