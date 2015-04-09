@@ -27,3 +27,7 @@ ionic:
 grunt-cli:
   npm.installed:
     - user: root
+
+coffee-script:
+  npm.installed:
+    - user: root
