@@ -21,3 +21,8 @@ flask:
   pip.installed:
     - require:
       - pkg: python-pip
+      
+pudb:
+  pip.installed:
+    - require:
+      - pkg: python-pip
