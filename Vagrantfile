@@ -42,4 +42,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Let Vagrant get an ip to allow ssh
   config.vm.network :public_network
+  
+  # Setting a default interface 
+  #config.vm.network "public_network", bridge: 'en0: Wi-Fi (AirPort)'
+  
 end
