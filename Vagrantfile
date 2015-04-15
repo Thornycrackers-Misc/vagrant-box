@@ -9,7 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
 
   # Sync folder
-   config.vm.synced_folder "salt/srv/", "/srv/salt/"
+  config.vm.synced_folder "salt/srv/", "/srv/salt/"
 
   # Provision via salt
   config.vm.provision :salt do |salt|
