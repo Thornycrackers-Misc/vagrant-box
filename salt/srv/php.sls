@@ -86,6 +86,11 @@ install-phpcs:
     - unless: which phpcs
     - name: curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar > phpcs.phar && mv phpcs.phar /usr/local/bin/phpcs && chmod +x /usr/local/bin/phpcs
     
+install-phpcbf:
+  cmd.run:
+    - unless: which phpcbf
+    - name: curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar > phpcbf.phar && mv phpcbf.phar /usr/local/bin/phpcbf && chmod +x /usr/local/bin/phpcbf
+    
 php-apache-restart:
   module.wait:
     - name: service.restart
