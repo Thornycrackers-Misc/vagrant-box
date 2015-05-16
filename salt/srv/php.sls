@@ -84,7 +84,7 @@ install-phpcpd:
 install-phpcs:
   cmd.run:
     - unless: which phpcs
-    - name: curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar > phpcs.phar > mv phpcs.phar /usr/local/bin/phpcs
+    - name: curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar > phpcs.phar && mv phpcs.phar /usr/local/bin/phpcs
     
 php-apache-restart:
   module.wait:
