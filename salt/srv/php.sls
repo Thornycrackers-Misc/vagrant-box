@@ -76,6 +76,11 @@ install-phpunit:
     - unless: which phpunit
     - name: wget https://phar.phpunit.de/phpunit.phar && sudo mv phpunit.phar /usr/local/bin/phpunit && chmod +x /usr/local/bin/phpunit
 
+install-phpcpd:
+  cmd.run:
+    - unless: which phpcpd
+    - name: wget https://phar.phpunit.de/phpcpd.phar && chmod +x phpcpd.phar && mv phpcpd.phar /usr/local/bin/phpcpd
+    
 php-apache-restart:
   module.wait:
     - name: service.restart
