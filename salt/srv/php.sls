@@ -90,7 +90,12 @@ install-phpcbf:
   cmd.run:
     - unless: which phpcbf
     - name: curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar > phpcbf.phar && mv phpcbf.phar /usr/local/bin/phpcbf && chmod +x /usr/local/bin/phpcbf
-    
+
+install-phploc:
+  cmd.run:
+    - unless: which phploc
+    - name: wget https://phar.phpunit.de/phploc.phar && chmod +x phploc.phar && mv phploc.phar /usr/local/bin/phploc
+
 php-apache-restart:
   module.wait:
     - name: service.restart
