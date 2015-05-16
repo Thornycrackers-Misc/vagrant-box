@@ -8,3 +8,7 @@ bundler:
 sass:
   gem.installed:
     - user: root
+    
+scss_lint:
+  gem.installed:
+    - user: root
