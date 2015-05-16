@@ -79,12 +79,12 @@ install-phpunit:
 install-phpcpd:
   cmd.run:
     - unless: which phpcpd
-    - name: wget https://phar.phpunit.de/phpcpd.phar && chmod +x phpcpd.phar && mv phpcpd.phar /usr/local/bin/phpcpd
+    - name: wget https://phar.phpunit.de/phpcpd.phar && chmod +x phpcpd.phar && mv phpcpd.phar /usr/local/bin/phpcpd && chmod +x /usr/local/bin/phpcpd
 
 install-phpcs:
   cmd.run:
     - unless: which phpcs
-    - name: curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar > phpcs.phar && mv phpcs.phar /usr/local/bin/phpcs
+    - name: curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar > phpcs.phar && mv phpcs.phar /usr/local/bin/phpcs && chmod +x /usr/local/bin/phpcs
     
 php-apache-restart:
   module.wait:
