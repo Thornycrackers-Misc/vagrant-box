@@ -31,3 +31,7 @@ grunt-cli:
 coffee-script:
   npm.installed:
     - user: root
+    
+jshint:
+  npm.installed:
+    - user: root
