@@ -6,6 +6,9 @@ python3:
 
 python3-pip:
   pkg.installed
+  
+python-dev:
+  pkg.installed
 
 virtualenv:
   pip.installed:
@@ -18,6 +21,11 @@ django:
       - pkg: python-pip
 
 flask:
+  pip.installed:
+    - require:
+      - pkg: python-pip
+
+mysql-python:
   pip.installed:
     - require:
       - pkg: python-pip
