@@ -9,6 +9,9 @@ python3-pip:
   
 python-dev:
   pkg.installed
+  
+libmysqlclient-dev:
+  pkg.installed
 
 virtualenv:
   pip.installed:
