@@ -13,6 +13,10 @@ python-dev:
 libmysqlclient-dev:
   pkg.installed
 
+# MSSQL connections
+unixodbc-dev:
+  pkg.installed
+  
 virtualenv:
   pip.installed:
     - require:
