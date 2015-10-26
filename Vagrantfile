@@ -13,11 +13,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Provision via salt
   config.vm.provision :salt do |salt|
-      salt.minion_config = "salt/minion"
-      salt.run_highstate = true
+      # Allow pip based installations for tornado >= 4.0
+      salt.bootstrap_options = "-F -c /tmp -P"
+
+      # Better output
       salt.verbose = true
       salt.colorize = true
+      
+      # Install with git to specify version
+      salt.install_type = "git"
+      salt.install_args = "v2015.8.0"
   end
+
+  # Create Salt Minion
+  config.vm.provision "shell" do |s|
+      s.path = "salt/setup.sh"
+      s.privileged = true
+  end
+  
+  # Run Highstate
+  config.vm.provision :shell, inline: 'sudo salt-call state.highstate'
 
   config.vm.provider :virtualbox do |virtualbox|
     # Helps OSX provision multiple cores
@@ -35,10 +50,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Use NFS for shared folders, much better performance BUT doesn't work on windows
   config.vm.synced_folder '.', '/vagrant', type: "nfs", mount_options: ['actimeo=2']
 
-  # Let Vagrant get an ip to allow ssh
-  config.vm.network :public_network
+  # Let Vagrant get a public ip
+  #config.vm.network :public_network
   
   # Setting a default interface 
-  #config.vm.network "public_network", bridge: 'en0: Wi-Fi (AirPort)'
+  config.vm.network "public_network", bridge: 'en0: Wi-Fi (AirPort)'
   
 end
