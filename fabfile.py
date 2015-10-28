@@ -62,3 +62,18 @@ def prompt(query):
         return False
     else:
         return prompt(query)
+
+def code_sniff(files):
+    '''
+    Example of passing files to fabric and code sniffing
+    '''
+    file_paths = string.split(files, '\n')
+    file_string = ''
+    default_dir = '/vagrant/investopedia.com/'
+    for file in file_paths:
+        if file:
+            if file[:20] != 'sites/default/themes':
+                file_string = file_string + default_dir + file + '\n'
+    if file_string:
+        run('phpcs --standard=Drupal {}'.format(file_string))
+
