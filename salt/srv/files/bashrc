@@ -120,8 +120,8 @@ alias pap='php app/console'
 # Source that configurations in the bashrc2 file
 source ~/.bashrc2
 
-# A Less cluttered prompt
-export PS1='[\u][\w]$ '
+# A Less cluttered, colored prompt
+export PS1='\[\033[31m\][\u][\w]\[\033[0m\]$ '
 
 # Go to /vagrant because I'm always there but I dont want home set there
 cd /vagrant
