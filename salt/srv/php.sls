@@ -74,7 +74,7 @@ install-symfony:
 install-phpunit:
   cmd.run:
     - unless: which phpunit
-    - name: wget https://phar.phpunit.de/phpunit.phar && sudo mv phpunit.phar /usr/local/bin/phpunit && chmod +x /usr/local/bin/phpunit
+    - name: wget https://phar.phpunit.de/phpunit-old.phar && sudo mv phpunit-old.phar /usr/local/bin/phpunit && chmod +x /usr/local/bin/phpunit
 
 install-phpcpd:
   cmd.run:
